@@ -1,12 +1,22 @@
-function TodoList(){
+import {todos} from "./Store";
+
+function List({tasks}) {
+   
+    const list = todos.map((task, index) => {
+     
+     return(
+         <div key={index} >
+             <input type="checkbox" id={index} name="item1"></input>
+            <label> {task.text}</label>
+         </div>
+     )
+ 
+ 
+    });
     return(
-        <div>
-        <h1>List of Todos</h1>
-            <div><input type="checkbox"/>Start Stream</div>
-            <div><input type="checkbox"/>Go to Store</div>
-            <div><input type="checkbox"/>Pay Bills</div>
-            <div><input type="checkbox"/>Do Homework</div>
-        </div>
+     <>
+     {list}
+     </>
     )
-    }
-export default TodoList;
+ }
+ export default List

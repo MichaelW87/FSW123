@@ -1,11 +1,17 @@
-import TodoList from './TodoList';
+import List from './TodoList';
 import './App.css';
+import {todos} from './Store';
 
 function App() {
   return (
-    <>
-    <TodoList />
-    </>
+    <div>
+    <h1>To do List</h1>
+   
+    <h3>
+    <ul>
+     <List tasks = {todos} />
+     </ul></h3>
+     </div>
   );
 }
 
