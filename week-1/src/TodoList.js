@@ -2,10 +2,12 @@ function TodoList(){
     return(
         <div>
         <h1>List of Todos</h1>
-            <div><input type="checkbox"/>Start Stream</div>
-            <div><input type="checkbox"/>Go to Store</div>
-            <div><input type="checkbox"/>Pay Bills</div>
-            <div><input type="checkbox"/>Do Homework</div>
+        <ul>
+            <li><input type="checkbox"/>Start Stream</li>
+            <li><input type="checkbox"/>Go to Store</li>
+            <li><input type="checkbox"/>Pay Bills</li>
+            <li><input type="checkbox"/>Do Homework</li>
+        </ul>
         </div>
     )
     }
