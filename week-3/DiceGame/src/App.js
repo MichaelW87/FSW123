@@ -1,5 +1,5 @@
 import './App.css';
-import RollDice from './components/roll/rollDice';
+import RollDice from './RollDice.js';
 
 function App() {
   return (
