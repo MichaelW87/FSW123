@@ -17,7 +17,7 @@ const ToDo = ({data, completeToDoProp, deleteToDoProp})=>{
                             onChange={() => completeElementHandler(element.id)}
                             />
                             {element.text}
-                        <button onClick={() => deleteElementHandler(element.id)}>x</button>
+                        <button onClick={() => deleteElementHandler(element.id)}>  x  </button>
                     </li>
                 ) 
             })
