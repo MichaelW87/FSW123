@@ -12,7 +12,7 @@ const SearchForm = () => {
 
 
     const API_KEY = "FitRJLoO2ymVxWWU0LwookQPTPuQqQOR";
-    const URL = `https://api.giphy.com/v1/gifs/random?api_key=FitRJLoO2ymVxWWU0LwookQPTPuQqQOR&tag=&rating=g
+    const URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchTerm}&limit=3&offset=0&rating=g&lang=en
     `;
 
 
@@ -23,13 +23,15 @@ const SearchForm = () => {
             .then( (response ) => {
                 setImgSrc(response.data[0].images.downsized.url)
                 setImgAlt(response.data[0].title)
-                
+                console.log(imgSrc);
+                console.log(imgAlt);
             })        
     
-    }, []);
+    
 
     const setUserInput = (value) => {
         setSearchTerm(value);
+    
     };
 
 
@@ -39,7 +41,7 @@ const SearchForm = () => {
     const sendGiphySearch = (event) => {
         event.preventDefault();
         const enteredInput = encodeURI(searchTerm);
-        const URL = `https://api.giphy.com/v1/gifs/random?api_key=FitRJLoO2ymVxWWU0LwookQPTPuQqQOR&tag=&rating=g`;
+        const URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${enteredInput}&limit=1&offset=0&rating=g&lang=en`;
         fetch(`${URL}`)
             .then((response) => response.json())
             .then((response) => {
@@ -67,6 +69,6 @@ const SearchForm = () => {
 
     )
 
-};
-
+});
+}
 export default SearchForm;
