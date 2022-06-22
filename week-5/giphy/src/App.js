@@ -1,11 +1,10 @@
-import SearchForm from './form/SearchForm';
-import './App.css';
+import GiphySearch from './GiphySearch';
+//import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <p className="p-style">Enter Your Search</p>
-      <SearchForm/>
+      <GiphySearch/>
     </div>
   );
 }
