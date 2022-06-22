@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-export default function GiphyForm() {
+function GiphySearch() {
     const [search, setSearch] = useState("dog");
     const [imgSrc, setImgSrc] = useState("");
     const [imgAlt, setImgAlt] = useState("");
@@ -48,3 +48,4 @@ export default function GiphyForm() {
         </form>
     );
 }
+export default GiphySearch;
