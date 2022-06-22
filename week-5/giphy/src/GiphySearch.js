@@ -39,7 +39,7 @@ function GiphySearch() {
     
     return (
         <form>
-            <label className="subtitle">Type search item below:</label>
+            <label className="subtitle">Type search:</label>
             <input type="text" value= {search} onChange= {handleChange} className="input"></input>
             <button onClick={handleClick}>Search</button>
             <div>
