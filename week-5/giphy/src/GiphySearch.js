@@ -28,7 +28,7 @@ function GiphySearch() {
             .catch((error) => console.log(error))
     }
     
-    const handleChange = (e) => {
+    const handleSubmit = (e) => {
         setSearch(e.target.value);
     }
     
@@ -39,8 +39,8 @@ function GiphySearch() {
     
     return (
         <form>
-            <label className="subtitle">Type search:</label>
-            <input type="text" value= {search} onChange= {handleChange} className="input"></input>
+            <label>Type search item below:</label>
+            <input type="text" value= {search} onSubmit= {handleSubmit}></input>
             <button onClick={handleClick}>Search</button>
             <div>
                {imgSrc && <img src={imgSrc} imgAlt={imgAlt}/>} 
@@ -48,4 +48,4 @@ function GiphySearch() {
         </form>
     );
 }
-export default GiphySearch;
+export default GiphySearch
