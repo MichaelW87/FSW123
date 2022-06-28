@@ -1,24 +1,22 @@
 import { useState } from "react";
-import Delete from "../UI/Delete";
-import Edit from "../UI/Edit";
+import Delete from "./Delete";
+import Edit from "./Edit";
 
-const ToDo = ({data, completeToDoProp, deleteToDoProp, editToDo, submitEdit})=>{
-    const [inputValue, setInputValue]=useState("");
-    const [disable, setDisable]=useState(false);
-
+const ToDo = ({data, completeTodoProp, deleteTodoProp, editToDo, submitEdit}) => {
+    const [inputValue, setInputValue] = useState("");
+    const [disable, setDisable] = useState(false);
     const completeElementHandler = (id) => {
-        completeToDoProp (id);
+        completeTodoProp(id);
     };
-    
-    const deleteElementHandler = (id)=>{
-        deleteToDoProp(id);
+    const deleteElementHandler = (id) => {
+        deleteTodoProp(id);
     };
-    const editToDoHandler=(elementId)=>{
-        console.log(elementId);
+    const editToDoHandler  = ( elementId) => {
+        console.log(elementId);    
         editToDo(elementId);
     };
-    const submitEditHandler=(text, id)=>{
-        if(text.length<=0)
+    const submitEditHandler = (text, id) => {
+        if(text.length <= 0)
         {
             return;
         }
@@ -28,9 +26,7 @@ const ToDo = ({data, completeToDoProp, deleteToDoProp, editToDo, submitEdit})=>{
     const setInputValueHandler = (event) => {
         setInputValue(event.target.value);
     };
-
     const disableHandler = (event) => {
-
         if(event.target.id === event.target.nextElementSibling.nextElementSibling.id)
         {
             setDisable(!disable);
@@ -41,7 +37,7 @@ const ToDo = ({data, completeToDoProp, deleteToDoProp, editToDo, submitEdit})=>{
             return
         }
     };
-    return(
+    return (
         <ul>
         {
             data.map( (element, index) => {
@@ -60,7 +56,7 @@ const ToDo = ({data, completeToDoProp, deleteToDoProp, editToDo, submitEdit})=>{
                                 disableHandler(event)}}
                                 />
                                 {element.text}
-                                <Delete props={{onClick: deleteElementHandler, elementId: element.id}}>Delete</Delete>
+                                <Delete props={{onClick: deleteElementHandler, elementId: element.id}}>X</Delete>
                                 <Edit props={{id:element.id, onClick: editToDoHandler, elementId: element.id}}>Edit</Edit>
                         </li>
                         :
@@ -77,7 +73,7 @@ const ToDo = ({data, completeToDoProp, deleteToDoProp, editToDo, submitEdit})=>{
                                     element.editState ? "" : element.text
                                 }
 
-                            <button id={element.id} disabled={inputValue.length > 0 ? false : true} 
+                            <button  id={element.id} disabled={inputValue.length > 0 ? false : true} 
                                      onClick={ () => {element.editState ? submitEditHandler(inputValue, element.id)
                                      :deleteElementHandler(element.id)}}>{element.editState ? "Submit Edit" : "Delete" }
                             </button>

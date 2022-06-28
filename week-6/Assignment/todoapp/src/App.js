@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { toDoArray } from "./components/STORE";
+import {todosArray} from './STORE.js';
 import {v4 as uuidV4} from "uuid";
+import TodoList from "./ToDoList";
+import ToDoForm from "./ToDoForm";
+import "./App.css";
 
-function App() {
-  const [todos, setToDo] = useState(toDoArray);
+
+
+const App = () => {
+  const [todos, setToDos] = useState(todosArray);
   
   const addTodo = (text) => {
     const toDoObject = {
@@ -12,52 +17,59 @@ function App() {
       isCompleted: false,
     };
 
-    setToDo((oldTodos) => {
+    setToDos((oldTodos) => {
       return [...oldTodos, toDoObject];
     });
   };
    
-  const completeToDo=(id)=>{
-    let tempToDoArray=[...todos];
-    let toDoIndex=tempToDoArray.findIndex(element=>element.id===id);
-    tempToDoArray[toDoIndex].isCompleted=!tempToDoArray[toDoIndex].isCompleted;
-    setToDo(tempToDoArray);
+  const completeTodo = (id) => {
+    let temporaryToDosArray = [...todos];
+    let toDoIndex = temporaryToDosArray.findIndex(element => element.id  === id);
+    temporaryToDosArray[toDoIndex].isCompleted = !temporaryToDosArray[toDoIndex].isCompleted;
+    setToDos(temporaryToDosArray);
   };
-  const deleteToDo=(id)=>{
-    let tempToDoArray=[...todos];
-    let deleteToDoArray=tempToDoArray.filter(element=>element.id!==id);
-    setToDo(deleteToDoArray);
+
+  const deleteToDo = (id) => {
+    let temporaryToDosArray = [...todos];
+    let deleteToDoArray = temporaryToDosArray.filter(element => element.id !== id);
+    setToDos(deleteToDoArray);
+
   };
 
   const editToDo = (id) => {
-    let tempToDoArray = [...todos];
-    let editToDoItem = tempToDoArray.findIndex(element => element.id === id);
-    tempToDoArray[editToDoItem].editState = !tempToDoArray[editToDoItem].editState;
-    setToDo(tempToDoArray);
+    let temporaryToDosArray = [...todos];
+    let editToDoItem = temporaryToDosArray.findIndex(element => element.id === id);
+    temporaryToDosArray[editToDoItem].editState = !temporaryToDosArray[editToDoItem].editState;
+    setToDos(temporaryToDosArray);
  
 
   };
 
   const submitEdit = (text, id) => {
   
-    let tempToDoArray = [...todos];
-    let editToDoItem = tempToDoArray.findIndex(element => element.id === id);
-    tempToDoArray[editToDoItem].text = text;
-    tempToDoArray[editToDoItem].editState = !tempToDoArray[editToDoItem].editState;
-    Object.assign(tempToDoArray[editToDoItem], tempToDoArray[editToDoItem]);
-    setToDo(tempToDoArray);
+    let temporaryToDosArray = [...todos];
+    let editToDoItem = temporaryToDosArray.findIndex(element => element.id === id);
+    temporaryToDosArray[editToDoItem].text = text;
+    temporaryToDosArray[editToDoItem].editState = !temporaryToDosArray[editToDoItem].editState;
+    Object.assign(temporaryToDosArray[editToDoItem], temporaryToDosArray[editToDoItem]);
+    setToDos(temporaryToDosArray);
 
   };
 
   return (
-    <div className="App">
-        addTodo={addTodo}
+    <>
+    <h1>To Do List</h1>
+      <h2>Add new To Do:</h2>
+      <ToDoForm addTodo={addTodo}/>
+      <TodoList addTodo={addTodo} 
         data={todos} 
-        completeTodo={completeToDo} 
+        completeTodo={completeTodo} 
         deleteToDo={deleteToDo} 
         editToDo={editToDo} 
-        submitEdit={submitEdit}
-    </div>
+        submitEdit={submitEdit}/>
+      
+    </>
+
   );
 }
 

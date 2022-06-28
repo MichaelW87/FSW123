@@ -1,6 +1,6 @@
 import {v4 as uuidV4} from "uuid";
 
-export const toDoArray = [
+export const todosArray = [
     {
         id: uuidV4(),
         text: "start stream",
